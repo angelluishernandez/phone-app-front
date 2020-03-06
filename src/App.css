@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.PhoneCard img{
+  max-height: 200px;
+}
+
+.PhoneCard{
+  width: 400px; 
+  height: 350px
+  
+}
