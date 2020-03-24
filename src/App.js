@@ -9,7 +9,6 @@ import updatePhones from "./redux/store/store"
 
 
 function App(props) {
-	console.log("props in App=> ", props)
 	return (
 		<div className="App">
 			<NavBar />
@@ -32,9 +31,10 @@ const MapPhones = (state) => {
 }
 
 const MapDispatchPhones = (dispatch) => {
+	console.log("entra")
 	return {
-		updatePhones : () => dispatch(updatePhones)
+		updatePhones : () => dispatch(updatePhones())
 			}
 }
 
-export default connect (MapPhones, MapDispatchPhones)(App);
+export default connect(MapPhones, MapDispatchPhones)(App);

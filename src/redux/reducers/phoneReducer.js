@@ -1,8 +1,14 @@
 import { UPDATE_PHONES } from "../actions/updatePhones";
 
-const phoneList = (state = {}, { type, payload }) => {
+
+const initialState = {
+  phones: []
+}
+
+
+const phoneList = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case UPDATE_PHONES:
+		case "UPDATE_PHONES":
 			return payload;
 
 		default:

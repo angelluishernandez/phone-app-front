@@ -1,25 +1,47 @@
 import React from "react";
-import phoneList from "../../phoneList.json";
-import PhoneCard from "./PhoneCard.js";
-class Home extends React.Component {
-	state = {
-		isLoading: true,
-		phones: "",
-	};
-	componentDidMount() {
-		this.setState({});
-	}
+import {connect} from "react-redux"
+import {updatePhones} from "../../redux/actions/updatePhones"
 
-	render() {
-		console.log(this.props)
-		return (
-			<div className="Home row mt-5 mr-3 ml-3">
-				{phoneList.map(phone => (
-					<PhoneCard key={phone.id} image ={require(`../../Images/${phone.imageFileName}`)}{...phone} />
-				))}
-			</div>
-		);
+import PhoneCard from "./PhoneCard.js";
+import { bindActionCreators } from "redux";
+
+
+class Home extends React.Component  {
+
+
+componentDidMount(){
+	const {updatePhones} = this.props
+	updatePhones()
+}
+
+render(){
+	return (
+		<div className="Home row mt-5 mr-3 ml-3">
+			{/* {updatePhones.map(phone => (
+				<PhoneCard key={phone.id} image ={require(`../../Images/${phone.imageFileName}`)}{...phone} />
+			))} */}
+		</div>
+	);
+
+
+}
+		
+
+}
+
+const mapStateToProps = state => {
+	console.log(state)
+	return {
+		phones: state
 	}
 }
 
-export default Home;
+
+const mapDispatchToProps = dispatch =>bindActionCreators(
+	{
+		updatePhones
+	}, 
+	dispatch
+
+)
+export default connect(mapStateToProps, mapStateToProps)(Home);
